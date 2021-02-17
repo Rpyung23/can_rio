@@ -4,7 +4,7 @@ function insertMascota($oM)
 {
     $conn = conexion();
     $sql = "insert into mascota(name,fecha_ingreso,observaciones,status,edad,fk_id_tipo_raza,fk_id_estado_salud,photo) 
-            values('".$oM->getName()."','".$oM->getFechaIngreso()."'
+            values('".$oM->getName()."',CURDATE()
             ,'".$oM->getObservaciones()."'
             ,".$oM->getStatus().",".$oM->getEdad()."
             ,".$oM->getOTipoRaza()->getIdTipoRaza().",".$oM->getOEstadoSalud()->getIdEstadoSalud()."
@@ -141,7 +141,7 @@ function selectMascotas()
        M.edad,M.fk_id_tipo_raza,M.photo,TR.detalle,Es.id_estado_salud,
        Es.detalle_estado_salud from mascota as M join tipo_raza
            as TR on TR.id_tipo_raza = M.fk_id_tipo_raza
-       join estado_salud as ES on ES.id_estado_salud = M.fk_id_estado_salud  where M.status=1";
+       join estado_salud as Es on Es.id_estado_salud = M.fk_id_estado_salud  where M.status=1";
 
     mysqli_begin_transaction($conn);
     mysqli_autocommit($conn,false);
@@ -224,6 +224,7 @@ function selectMascota($id)
     }catch(Exception $e)
     {
         mysqli_rollback($conn);
+        return $listMascotas;
     }
 
     mysqli_commit($conn);
