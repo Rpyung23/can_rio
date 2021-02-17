@@ -36,7 +36,7 @@ switch($_SERVER['REQUEST_METHOD'])
     case 'GET':
         if($_SERVER['REQUEST_URI']=="/can_rio/rest/casos_externos.php/fechas")
         {
-            echo json_encode(selecF($json['fecha_ini'],$json['fecha_fin']));
+            echo json_encode(selecF($_GET['fecha_ini'],$_GET['fecha_fin']));
             http_response_code(200);
         }else
             {

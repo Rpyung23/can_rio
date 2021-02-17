@@ -37,10 +37,10 @@ switch($_SERVER['REQUEST_METHOD'])
         switch($_SERVER['REQUEST_URI'])
         {
             case "/can_rio/rest/donaciones.php/fechas":
-                echo json_encode(fechas($json['fecha_ini'],$json['fecha_fin']));
+                echo json_encode(fechas($_GET['fecha_ini'],$_GET['fecha_fin']));
                 break;
             case "/can_rio/rest/donaciones.php/valor":
-                echo json_encode(valor($json['valor']));
+                echo json_encode(valor($_GET['valor']));
                 break;
             case "/can_rio/rest/donaciones.php/todos":
                 echo json_encode(todos());

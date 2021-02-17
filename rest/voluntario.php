@@ -39,7 +39,7 @@ switch ($_SERVER['REQUEST_METHOD'])
 
         if($_SERVER['REQUEST_URI'] == "/can_rio/rest/voluntario.php/voluntario")
         {
-            echo json_encode(readVolId($json['dni_voluntario']));
+            echo json_encode(readVolId($_GET['dni_voluntario']));
             http_response_code(200);
         }else
             {

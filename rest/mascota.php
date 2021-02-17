@@ -54,7 +54,7 @@ switch($_SERVER['REQUEST_METHOD'])
 
                 /**Mascota Por id**/
 
-                echo json_encode(selectId($json['id_mascota']));
+                echo json_encode(selectId($_GET['id_mascota']));
                 http_response_code(200);
                 break;
         }

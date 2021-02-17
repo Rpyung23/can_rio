@@ -37,8 +37,8 @@ switch($_SERVER['REQUEST_METHOD'])
         try
         {
             $oL = new cLogin();
-            $oL->setUser($json['user']);
-            $oL->setPassw($json['pass']);
+            $oL->setUser($_GET['user']);
+            $oL->setPassw($_GET['pass']);
 
             echo json_encode(checkLoginApi($oL));
 

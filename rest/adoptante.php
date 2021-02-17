@@ -39,7 +39,7 @@ switch ($_SERVER['REQUEST_METHOD'])
 
         if($_SERVER['REQUEST_URI'] == "/can_rio/rest/adoptante.php/buscar")
         {
-            echo json_encode(readAdopId($json['dni']));
+            echo json_encode(readAdopId($_GET['dni']));
             http_response_code(200);
         }else
             {

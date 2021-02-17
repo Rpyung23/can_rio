@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<input type="submit" value = "ENVIAR" onclick="login()">
+
+<script>
+    function login()
+    {
+        let user =
+            {
+                user:"canrio",
+                pass:"Puma150012"
+            }
+
+        $.ajax(
+            {
+                url : "http://localhost/can_rio/rest/login.php",
+                method : "GET",
+                data : "user=canrio&pass=Puma150012"
+            }).done(function(data)
+        {
+            console.log(data);
+        }).fail(function()
+        {
+            alert("ERROR API")
+        })
+    }
+</script>
+
+</body>
+</html>

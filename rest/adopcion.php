@@ -46,13 +46,13 @@ switch($_SERVER['REQUEST_METHOD'])
                 break;
             case '/can_rio/rest/adopcion.php/adoptante':
 
-                echo json_encode(allAdoptacionPorAdoptante($json['dni_adoptante']));
+                echo json_encode(allAdoptacionPorAdoptante($_GET['dni_adoptante']));
                 http_response_code(200);
 
                 break;
             case '/can_rio/rest/adopcion.php/fechas':
 
-                echo json_encode(allAdoptacionPorFechas($json['fecha_inicio'],$json['fecha_fin']));
+                echo json_encode(allAdoptacionPorFechas($_GET['fecha_inicio'],$_GET['fecha_fin']));
                 http_response_code(200);
 
                 break;
