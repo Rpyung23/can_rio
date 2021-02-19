@@ -3,7 +3,7 @@ function insertDonacion($oD)
 {
     $conn = conexion();
     $sql = "insert into donaciones(name_donante,fecha_donante,valor,detalle,fk_id_tipo_donacion)
-            values ('".$oD->getNameDonante()."','".$oD->getFechaDonante()."'
+            values ('".$oD->getNameDonante()."',CURDATE()
             ,".$oD->getValor().",'".$oD->getDetalle()."',".$oD->getOTipoDonacion()->getIdTipoDonacion().")";
 
     mysqli_begin_transaction($conn);
@@ -67,14 +67,14 @@ function selectAllDonaciones()
     $cont = 0;
     $conn = conexion();
     $sql = "select *,D.detalle as detalle_dona,TD.detalle as detalleTipo from 
-            donaciones as D join tipo_donacion as TD on Td.id_tipo_donacion = D.fk_id_tipo_donacion";
+            donaciones as D join tipo_donacion as TD on TD.id_tipo_donacion = D.fk_id_tipo_donacion";
 
     mysqli_begin_transaction($conn);
 
     try
     {
         $result = mysqli_query($conn,$sql);
-        if(mysqli_num_rows($result)>0)
+        if($result== true &&mysqli_num_rows($result)>0)
         {
             while($lector = mysqli_fetch_array($result))
             {
@@ -104,7 +104,7 @@ function selectAllDonacionIntervalFechas($fechaI,$fechaF)
     $listDonaciones = null;
     $cont = 0;
     $conn = conexion();
-    $sql = "select *,D.detalle as detalle_dona,TD.detalle as detalleTipo from donaciones as D join tipo_donacion as TD on Td.id_tipo_donacion = D.fk_id_tipo_donacion
+    $sql = "select *,D.detalle as detalle_dona,TD.detalle as detalleTipo from donaciones as D join tipo_donacion as TD on TD.id_tipo_donacion = D.fk_id_tipo_donacion
               where D.fecha_donante between '".$fechaI."' and '".$fechaF."'";
 
     mysqli_begin_transaction($conn,MYSQLI_TRANS_START_READ_WRITE);

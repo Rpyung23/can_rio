@@ -9,7 +9,7 @@ function insertAdopcion($oAdopcion)
     $sql_insert_adopcion = "insert into adopcion(fk_id_mascota, fk_dni_adoptante, fecha_adoptacion,status) 
                             values(".$oAdopcion->getOMascota()->getIdMascota()."
                             ,'".$oAdopcion->getOAdoptante()->getODatosPersonales()->getDni()."'
-                            ,'".$oAdopcion->getFechaAdopcion()."',1)";
+                            ,NOW(),1)";
 
     mysqli_begin_transaction($conn);
     mysqli_autocommit($conn,false);

@@ -7,7 +7,7 @@ function insertVoluntario($oV)
             values('".$oV->getODatosPersonales()->getDni()."'
             ,'".$oV->getODatosPersonales()->getNombres()."'
             ,'".$oV->getODatosPersonales()->getApellidos()."'
-            ,'".$oV->getODatosPersonales()->getFecha()."'
+            ,CURDATE()
             ,'".$oV->getODatosPersonales()->getPhone()."'
             ,'".$oV->getODatosPersonales()->getEmail()."'
             ,'".$oV->getODatosPersonales()->getDireccion()."'

@@ -8,9 +8,9 @@ function insertAdoptante($oA)
             ,'".$oA->getODatosPersonales()->getNombres()."'
             ,'".$oA->getODatosPersonales()->getApellidos()."'
             ,'".$oA->getODatosPersonales()->getFecha()."'
+            ,'".$oA->getODatosPersonales()->getDireccion()."'
             ,'".$oA->getODatosPersonales()->getPhone()."'
-            ,'".$oA->getODatosPersonales()->getEmail()."'
-            ,'".$oA->getODatosPersonales()->getDireccion()."')";
+            ,'".$oA->getODatosPersonales()->getEmail()."')";
 
     //echo $sql;
 
@@ -48,7 +48,7 @@ function selectAdoptanteId($id)
 
     try
     {
-        if(mysqli_num_rows($result) > 0)
+        if($result== true && mysqli_num_rows($result) > 0)
         {
             $lector = mysqli_fetch_array($result);
 
@@ -90,7 +90,7 @@ function selectAdoptante()
 
     try
     {
-        if(mysqli_num_rows($result) > 0)
+        if($result== true && mysqli_num_rows($result) > 0)
         {
             while($lector = mysqli_fetch_array($result))
             {

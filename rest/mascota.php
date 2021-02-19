@@ -33,11 +33,13 @@ if(file_exists('mysql/mascota_mysql.php'))
 $json = json_decode(file_get_contents('php://input'),true);
 
 
+
 switch($_SERVER['REQUEST_METHOD'])
 {
     case 'GET':
         switch($_SERVER['REQUEST_URI'])
         {
+
             case '/can_rio/rest/mascota.php/todas':
 
                 /**Todos las mascotas ()**/
@@ -50,13 +52,6 @@ switch($_SERVER['REQUEST_METHOD'])
                 /**Galeria**/
 
                 echo json_encode(selectG());
-                http_response_code(200);
-                break;
-            case '/can_rio/rest/mascota.php/mascota':
-
-                /**Mascota Por id**/
-
-                echo json_encode(selectId($_GET['id_mascota']));
                 http_response_code(200);
                 break;
         }
@@ -148,28 +143,7 @@ function selectM()
     return array("status_code"=>300,"datos"=>null);
 }
 
-function selectId($id)
-{
-    $listM = selectMascota($id);
 
-    if($listM!=null)
-    {
-        $listM = array("idMascota"=>$listM->getIdMascota()
-        ,"name"=>$listM->getName()
-        ,"fecha_ingreso"=>$listM->getFechaIngreso()
-        ,"observaciones"=>$listM->getObservaciones()
-        ,"status"=>$listM->getStatus()
-        ,"edad"=>$listM->getEdad()
-        ,"photo64"=>$listM->getPhoto64()
-        ,"idTipoRaza"=>$listM->getOTipoRaza()->getIdTipoRaza()
-        ,"detalleTipoRaza"=>$listM->getOTipoRaza()->getDetalle()
-        ,"idEstadoSalud"=>$listM->getOEstadoSalud()->getIdEstadoSalud()
-        ,"detalleEstadoSalud"=>$listM->getOEstadoSalud()->getDetalle());
-
-        return array("status_code"=>200,"datos"=>$listM);
-    }
-    return array("status_code"=>300,"datos"=>null);
-}
 
 function selectG()
 {

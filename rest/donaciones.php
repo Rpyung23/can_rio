@@ -39,9 +39,6 @@ switch($_SERVER['REQUEST_METHOD'])
         //echo $_SERVER['REQUEST_URI'];
         switch($_SERVER['REQUEST_URI'])
         {
-            case "/can_rio/rest/donaciones.php/fechas":
-                echo json_encode(fechas($_GET['fecha_ini'],$_GET['fecha_fin']));
-                break;
             case "/can_rio/rest/donaciones.php/valor":
                 echo json_encode(valor($_GET['valor']));
                 break;
@@ -55,7 +52,7 @@ switch($_SERVER['REQUEST_METHOD'])
     case 'POST':
         $oDonacion = new cDonaciones();
         $oDonacion->setNameDonante($json['name']);
-        $oDonacion->setFechaDonante($json['fecha']);
+        //$oDonacion->setFechaDonante($json['fecha']);
         $oDonacion->setValor($json['valor']);
         $oDonacion->setDetalle($json['detalle']);
         $oDonacion->getOTipoDonacion()->setIdTipoDonacion($json['id_Tipo_donacion']);

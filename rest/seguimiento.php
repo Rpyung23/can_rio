@@ -52,10 +52,6 @@ switch($_SERVER['REQUEST_METHOD'])
 
         switch ($_SERVER['REQUEST_URI'])
         {
-            case '/can_rio/rest/seguimiento.php/canino':
-                echo json_encode(selectporCanino($_GET['id_canino']));
-                http_response_code(200);
-                break;
             case '/can_rio/rest/seguimiento.php/seguimientos':
                 echo json_encode(selectCaninos());
                 http_response_code(200);

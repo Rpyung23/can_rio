@@ -39,15 +39,8 @@ switch ($_SERVER['REQUEST_METHOD'])
 {
     case 'GET':
 
-        if($_SERVER['REQUEST_URI'] == "/can_rio/rest/voluntario.php/voluntario")
-        {
-            echo json_encode(readVolId($_GET['dni_voluntario']));
-            http_response_code(200);
-        }else
-            {
-                echo json_encode(readVol());
-                http_response_code(200);
-            }
+        echo json_encode(readVol());
+        http_response_code(200);
 
         break;
     case 'POST':
@@ -57,7 +50,7 @@ switch ($_SERVER['REQUEST_METHOD'])
         $oV->getODatosPersonales()->setDni($json['dni']);
         $oV->getODatosPersonales()->setPhone($json['phone']);
         $oV->getODatosPersonales()->setEmail($json['email']);
-        $oV->getODatosPersonales()->setFecha($json['fecha']);
+        
         $oV->getODatosPersonales()->setDireccion($json['dir']);
         $oV->setStatus(1);
 
@@ -88,26 +81,7 @@ switch ($_SERVER['REQUEST_METHOD'])
         break;
 }
 
-function readVolId($id)
-{
-    $lisVol =  selectVoluntarioID($id);
-    $arraysVol = null;
-    if($lisVol!=null)
-    {
 
-        $arraysVol = array("dni_voluntario"=>$lisVol->getODatosPersonales()->getDni()
-        ,"names"=>$lisVol->getODatosPersonales()->getNombres()
-        ,"apes"=>$lisVol->getODatosPersonales()->getApellidos()
-        ,"fecha_ingreso"=>$lisVol->getODatosPersonales()->getFecha()
-        ,"phone"=>$lisVol->getODatosPersonales()->getPhone()
-        ,"email"=>$lisVol->getODatosPersonales()->getEmail()
-        ,"dir"=>$lisVol->getODatosPersonales()->getDireccion());
-
-        return array("status_code"=>200,"datos"=>$arraysVol);
-    }
-
-    return array("status_code"=>300,"datos"=>null);
-}
 
 
 function nuevoVol($oVol)

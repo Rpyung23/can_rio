@@ -162,6 +162,7 @@ function deleteCanino(id_canino) {
         } else {
             Swal.fire(
                 `Canino ${id_canino}`,
+                '',
                 'No se pudo completar los cambios',
                 'info'
             )
@@ -173,7 +174,6 @@ function deleteCanino(id_canino) {
         console.log(e.responseText)
 
         //var JSON_string = JSON.stringify(e.responseText)
-
 
         var json_parse = JSON.parse(e.responseText);
 
@@ -199,3 +199,11 @@ function deleteCanino(id_canino) {
 
     })
 }
+
+// Basic example
+$(document).ready(function() {
+    $('#id_table_canino').DataTable({
+        "pagingType": "simple" // "simple" option for 'Previous' and 'Next' buttons only
+    });
+    $('.dataTables_length').addClass('bs-select');
+});
