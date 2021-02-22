@@ -76,9 +76,9 @@ switch($_SERVER['REQUEST_METHOD'])
         $oMa = new cMascota();
         $oMa->setIdMascota($json['íd_mascota']);
         $oMa->setName($json['name']);
-        $oMa->setFechaIngreso($json['date']);
+        //$oMa->setFechaIngreso($json['date']);
         $oMa->setObservaciones($json['observaciones']);
-        $oMa->setStatus($json['status']);
+        //$oMa->setStatus($json['status']);
         $oMa->setEdad($json['edad']);
         $oMa->getOTipoRaza()->setIdTipoRaza($json['id_tipo_raza']);
         $oMa->getOEstadoSalud()->setIdEstadoSalud($json['id_estado_salud']);

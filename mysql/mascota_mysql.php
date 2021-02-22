@@ -33,8 +33,8 @@ function insertMascota($oM)
 function updateMascota($M)
 {
     $conn = conexion();
-    $sql = "update mascota set name = '".$M->getName()."',fecha_ingreso = '".$M->getFechaIngreso()."',
-                   observaciones = '".$M->getObservaciones()."',status = ".$M->getStatus().",
+    $sql = "update mascota set name = '".$M->getName()."',
+                   observaciones = '".$M->getObservaciones()."',
                    edad = ".$M->getEdad().",fk_id_tipo_raza = ".$M->getOTipoRaza()->getIdTipoRaza().",
                    fk_id_estado_salud = ".$M->getOEstadoSalud()->getIdEstadoSalud()." 
                    where id_mascota = ".$M->getIdMascota();

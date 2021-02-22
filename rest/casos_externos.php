@@ -43,9 +43,11 @@ switch($_SERVER['REQUEST_METHOD'])
             http_response_code(200);
         }else
             {
-                echo json_encode(selecAll());
-                http_response_code(200);
+
             }
+
+        echo json_encode(selecAll());
+        http_response_code(200);
         break;
     case 'POST':
         $oC->setFechaCaso($json['fecha']);
